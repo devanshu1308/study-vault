@@ -125,6 +125,24 @@ const upload = multer({
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Serve index.html with dynamically resolved absolute OpenGraph URLs
+app.get(['/', '/index.html'], (req, res) => {
+  const forwardedProto = req.headers['x-forwarded-proto'];
+  const protocol = forwardedProto ? forwardedProto.split(',')[0].trim() : (req.secure ? 'https' : 'http');
+  const host = req.headers['x-forwarded-host'] || req.get('host');
+  const baseUrl = `${protocol}://${host}`;
+
+  try {
+    let html = fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf-8');
+    html = html.replace(/https:\/\/study-vault-lncl\.onrender\.com/g, baseUrl);
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.send(html);
+  } catch (err) {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  }
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Security Middleware: Owner verification
