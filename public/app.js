@@ -107,6 +107,9 @@ const elements = {
   uploadForm: document.getElementById('uploadForm'),
   uploadSubjectSelect: document.getElementById('uploadSubjectSelect'),
   uploadCategorySelect: document.getElementById('uploadCategorySelect'),
+  uploadModuleGroup: document.getElementById('uploadModuleGroup'),
+  uploadModuleInput: document.getElementById('uploadModuleInput'),
+  moduleDatalist: document.getElementById('moduleDatalist'),
   uploadTitleInput: document.getElementById('uploadTitleInput'),
   fileDropzone: document.getElementById('fileDropzone'),
   filePickerInput: document.getElementById('filePickerInput'),
@@ -372,18 +375,115 @@ function renderCompartment(subjectId) {
           `;
           elements.materialsList.appendChild(groupHeader);
 
-          groupItems.forEach(mat => {
-            elements.materialsList.appendChild(createMaterialCard(mat));
-          });
+          if (cat.id === 'Notes') {
+            renderNotesWithModules(groupItems, elements.materialsList);
+          } else {
+            groupItems.forEach(mat => {
+              elements.materialsList.appendChild(createMaterialCard(mat));
+            });
+          }
         }
       });
     } else {
       // Single category view
-      filteredMaterials.forEach(mat => {
-        elements.materialsList.appendChild(createMaterialCard(mat));
-      });
+      if (state.currentCategoryFilter === 'Notes') {
+        renderNotesWithModules(filteredMaterials, elements.materialsList);
+      } else {
+        filteredMaterials.forEach(mat => {
+          elements.materialsList.appendChild(createMaterialCard(mat));
+        });
+      }
     }
   }
+}
+
+function renderNotesWithModules(notesMaterials, container) {
+  // Group notes materials by module
+  const moduleMap = new Map();
+
+  notesMaterials.forEach(m => {
+    const mod = (m.module && m.module.trim()) ? m.module.trim() : 'General Notes';
+    if (!moduleMap.has(mod)) {
+      moduleMap.set(mod, []);
+    }
+    moduleMap.get(mod).push(m);
+  });
+
+  moduleMap.forEach((mats, moduleTitle) => {
+    // Separate into PDFs/Documents, PPTs/Slides, and others
+    const pdfItems = mats.filter(m => m.fileType === 'pdf' || m.fileType === 'doc');
+    const pptItems = mats.filter(m => m.fileType === 'ppt');
+    const otherItems = mats.filter(m => m.fileType !== 'pdf' && m.fileType !== 'doc' && m.fileType !== 'ppt');
+
+    const folderCard = document.createElement('div');
+    folderCard.className = 'module-folder-card open';
+
+    folderCard.innerHTML = `
+      <div class="module-folder-header">
+        <div class="module-folder-title-left">
+          <span class="module-folder-icon">📁</span>
+          <span class="module-folder-name">${escapeHtml(moduleTitle)}</span>
+          <span class="module-folder-count">${mats.length} ${mats.length === 1 ? 'item' : 'items'}</span>
+        </div>
+        <span class="module-folder-chevron">▼</span>
+      </div>
+      <div class="module-folder-content">
+        ${pdfItems.length > 0 ? `
+          <div class="module-sub-section">
+            <div class="module-sub-header sub-pdf">
+              <span class="module-sub-badge">📄</span>
+              <span>PDFs &amp; Reading Notes (${pdfItems.length})</span>
+            </div>
+            <div class="module-sub-items sub-items-pdf"></div>
+          </div>
+        ` : ''}
+
+        ${pptItems.length > 0 ? `
+          <div class="module-sub-section">
+            <div class="module-sub-header sub-ppt">
+              <span class="module-sub-badge">📊</span>
+              <span>PPTs &amp; Lecture Slides (${pptItems.length})</span>
+            </div>
+            <div class="module-sub-items sub-items-ppt"></div>
+          </div>
+        ` : ''}
+
+        ${otherItems.length > 0 ? `
+          <div class="module-sub-section">
+            <div class="module-sub-header sub-other">
+              <span class="module-sub-badge">📦</span>
+              <span>Other Documents (${otherItems.length})</span>
+            </div>
+            <div class="module-sub-items sub-items-other"></div>
+          </div>
+        ` : ''}
+      </div>
+    `;
+
+    // Folder collapse / expand toggle
+    const header = folderCard.querySelector('.module-folder-header');
+    header.addEventListener('click', () => {
+      folderCard.classList.toggle('open');
+    });
+
+    // Populate separated sub-sections
+    const pdfContainer = folderCard.querySelector('.sub-items-pdf');
+    if (pdfContainer) {
+      pdfItems.forEach(item => pdfContainer.appendChild(createMaterialCard(item)));
+    }
+
+    const pptContainer = folderCard.querySelector('.sub-items-ppt');
+    if (pptContainer) {
+      pptItems.forEach(item => pptContainer.appendChild(createMaterialCard(item)));
+    }
+
+    const otherContainer = folderCard.querySelector('.sub-items-other');
+    if (otherContainer) {
+      otherItems.forEach(item => otherContainer.appendChild(createMaterialCard(item)));
+    }
+
+    container.appendChild(folderCard);
+  });
 }
 
 function createMaterialCard(material) {
@@ -529,11 +629,30 @@ function openUploadModal() {
   // Reset inputs
   elements.uploadForm.reset();
   if (state.currentSubjectId) elements.uploadSubjectSelect.value = state.currentSubjectId;
+  if (elements.uploadModuleInput) elements.uploadModuleInput.value = '';
   clearFileSelection();
   elements.uploadErrorMsg.classList.add('hidden');
+  populateModuleDatalist();
 
   elements.uploadModalOverlay.classList.add('active');
   elements.uploadModalOverlay.setAttribute('aria-hidden', 'false');
+}
+
+function populateModuleDatalist() {
+  if (!elements.moduleDatalist) return;
+  const selectedSubject = elements.uploadSubjectSelect.value;
+  const existingModules = [...new Set(
+    state.materials
+      .filter(m => m.subject === selectedSubject && m.module && m.module.trim())
+      .map(m => m.module.trim())
+  )];
+
+  elements.moduleDatalist.innerHTML = '';
+  existingModules.forEach(mod => {
+    const opt = document.createElement('option');
+    opt.value = mod;
+    elements.moduleDatalist.appendChild(opt);
+  });
 }
 
 function closeUploadModal() {
@@ -580,11 +699,13 @@ async function handleUploadSubmit(e) {
 
   const subject = elements.uploadSubjectSelect.value;
   const category = elements.uploadCategorySelect.value;
+  const moduleName = elements.uploadModuleInput ? elements.uploadModuleInput.value.trim() : '';
   const title = elements.uploadTitleInput.value.trim() || file.name;
 
   const formData = new FormData();
   formData.append('subject', subject);
   formData.append('category', category);
+  formData.append('module', moduleName);
   formData.append('title', title);
   formData.append('file', file);
 
@@ -731,6 +852,7 @@ function bindEvents() {
   elements.cancelUploadBtn.addEventListener('click', closeUploadModal);
   elements.uploadModalBackdrop.addEventListener('click', closeUploadModal);
   elements.uploadForm.addEventListener('submit', handleUploadSubmit);
+  elements.uploadSubjectSelect.addEventListener('change', populateModuleDatalist);
 
   // File Picker & Dropzone
   elements.filePickerInput.addEventListener('change', (e) => {

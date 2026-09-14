@@ -3,121 +3,192 @@
     "id": "mat-aiml-1",
     "subject": "AIML",
     "category": "Notes",
-    "title": "Unit 1: Neural Networks & Backprop Deep Dive",
+    "module": "Module 1: Foundations & Neural Networks",
+    "title": "Unit 1: Neural Networks & Backpropagation Notes",
     "originalFilename": "AIML_Unit1_Notes.pdf",
     "storageFilename": "seed_aiml_unit1.pdf",
     "fileType": "pdf",
     "size": 762,
-    "createdAt": "2026-09-14T18:39:22.364Z"
+    "createdAt": "2026-09-14T19:58:11.056Z"
+  },
+  {
+    "id": "mat-aiml-1-ppt",
+    "subject": "AIML",
+    "category": "Notes",
+    "module": "Module 1: Foundations & Neural Networks",
+    "title": "Module 1 Lecture Slides (Perceptrons & Backprop)",
+    "originalFilename": "AIML_Module1_Slides.pptx",
+    "storageFilename": "seed_aiml_m1_slides.pptx",
+    "fileType": "ppt",
+    "size": 92,
+    "createdAt": "2026-09-14T19:58:11.058Z"
+  },
+  {
+    "id": "mat-aiml-2-notes",
+    "subject": "AIML",
+    "category": "Notes",
+    "module": "Module 2: Deep Learning & Optimization",
+    "title": "Unit 2: Optimization Algorithms & Loss Surfaces",
+    "originalFilename": "AIML_Unit2_Optimization.pdf",
+    "storageFilename": "seed_aiml_unit2.pdf",
+    "fileType": "pdf",
+    "size": 741,
+    "createdAt": "2026-09-14T19:58:11.058Z"
+  },
+  {
+    "id": "mat-aiml-2-ppt",
+    "subject": "AIML",
+    "category": "Notes",
+    "module": "Module 2: Deep Learning & Optimization",
+    "title": "Module 2 Presentation: Training Deep Networks",
+    "originalFilename": "AIML_Module2_DeepLearning.pptx",
+    "storageFilename": "seed_aiml_m2_slides.pptx",
+    "fileType": "ppt",
+    "size": 89,
+    "createdAt": "2026-09-14T19:58:11.059Z"
   },
   {
     "id": "mat-aiml-2",
     "subject": "AIML",
     "category": "PYQs",
+    "module": "",
     "title": "Midsem 2025 Solved PYQ Paper",
     "originalFilename": "AIML_Midsem_2025_Solved.pdf",
     "storageFilename": "seed_aiml_midsem.pdf",
     "fileType": "pdf",
     "size": 750,
-    "createdAt": "2026-09-14T18:39:22.365Z"
+    "createdAt": "2026-09-14T19:58:11.059Z"
   },
   {
     "id": "mat-aiml-3",
     "subject": "AIML",
     "category": "Labs",
+    "module": "",
     "title": "Lab Manual & PyTorch Experiments 1-8",
     "originalFilename": "AIML_Lab_Manual_Full.pdf",
     "storageFilename": "seed_aiml_lab.pdf",
     "fileType": "pdf",
     "size": 759,
-    "createdAt": "2026-09-14T18:39:22.370Z"
+    "createdAt": "2026-09-14T19:58:11.059Z"
   },
   {
     "id": "mat-gai-1",
     "subject": "GAI",
     "category": "Notes",
+    "module": "Module 1: Transformers & Attention",
     "title": "Transformers & Attention Mechanism Architecture",
     "originalFilename": "GAI_Transformers_Handwritten.pdf",
     "storageFilename": "seed_gai_transformers.pdf",
     "fileType": "pdf",
     "size": 771,
-    "createdAt": "2026-09-14T18:39:22.371Z"
+    "createdAt": "2026-09-14T19:58:11.060Z"
+  },
+  {
+    "id": "mat-gai-1-ppt",
+    "subject": "GAI",
+    "category": "Notes",
+    "module": "Module 1: Transformers & Attention",
+    "title": "Module 1 Deck: Visualizing Self-Attention",
+    "originalFilename": "GAI_Attention_Visualized.pptx",
+    "storageFilename": "seed_gai_m1_slides.pptx",
+    "fileType": "ppt",
+    "size": 85,
+    "createdAt": "2026-09-14T19:58:11.060Z"
   },
   {
     "id": "mat-gai-2",
     "subject": "GAI",
     "category": "Important",
+    "module": "",
     "title": "Prompt Engineering & RAG Cheatsheet",
     "originalFilename": "Prompt_Engineering_RAG_CheatSheet.pdf",
     "storageFilename": "seed_gai_cheatsheet.pdf",
     "fileType": "pdf",
     "size": 765,
-    "createdAt": "2026-09-14T18:39:22.371Z"
+    "createdAt": "2026-09-14T19:58:11.060Z"
   },
   {
     "id": "mat-qcai-1",
     "subject": "QCAI",
     "category": "Notes",
+    "module": "Module 1: Quantum Mechanics Basics",
     "title": "Qubits, Superposition & Entanglement Foundations",
     "originalFilename": "QCAI_Foundations_Unit1.pdf",
     "storageFilename": "seed_qcai_foundations.pdf",
     "fileType": "pdf",
     "size": 761,
-    "createdAt": "2026-09-14T18:39:22.371Z"
+    "createdAt": "2026-09-14T19:58:11.061Z"
   },
   {
     "id": "mat-qcai-2",
     "subject": "QCAI",
     "category": "PYQs",
+    "module": "",
     "title": "Endsem 2024 Quantum Algorithm PYQs",
     "originalFilename": "QCAI_Endsem_2024_PYQs.pdf",
     "storageFilename": "seed_qcai_endsem.pdf",
     "fileType": "pdf",
     "size": 765,
-    "createdAt": "2026-09-14T18:39:22.372Z"
+    "createdAt": "2026-09-14T19:58:11.061Z"
   },
   {
     "id": "mat-cv-1",
     "subject": "CV",
     "category": "Notes",
+    "module": "Module 1: Filtering & Feature Extraction",
     "title": "CNNs, Convolutions & Edge Detection Filters",
     "originalFilename": "CV_CNN_Convolutions.pdf",
     "storageFilename": "seed_cv_cnn.pdf",
     "fileType": "pdf",
     "size": 766,
-    "createdAt": "2026-09-14T18:39:22.372Z"
+    "createdAt": "2026-09-14T19:58:11.061Z"
+  },
+  {
+    "id": "mat-cv-1-ppt",
+    "subject": "CV",
+    "category": "Notes",
+    "module": "Module 1: Filtering & Feature Extraction",
+    "title": "Module 1 Slides: Spatial Filtering & Kernels",
+    "originalFilename": "CV_Spatial_Filtering.pptx",
+    "storageFilename": "seed_cv_m1_slides.pptx",
+    "fileType": "ppt",
+    "size": 88,
+    "createdAt": "2026-09-14T19:58:11.061Z"
   },
   {
     "id": "mat-cv-2",
     "subject": "CV",
     "category": "Labs",
+    "module": "",
     "title": "OpenCV Python Lab Codes & Output Screenshots",
     "originalFilename": "CV_OpenCV_Lab_Guide.pdf",
     "storageFilename": "seed_cv_opencv.pdf",
     "fileType": "pdf",
     "size": 760,
-    "createdAt": "2026-09-14T18:39:22.372Z"
+    "createdAt": "2026-09-14T19:58:11.062Z"
   },
   {
     "id": "mat-aps-1",
     "subject": "APS",
     "category": "Notes",
+    "module": "Module 1: Random Variables & Distributions",
     "title": "Distributions Cheatsheet (Binomial, Poisson, Normal)",
     "originalFilename": "APS_Distributions_Mastery.pdf",
     "storageFilename": "seed_aps_dist.pdf",
     "fileType": "pdf",
     "size": 760,
-    "createdAt": "2026-09-14T18:39:22.373Z"
+    "createdAt": "2026-09-14T19:58:11.062Z"
   },
   {
     "id": "mat-aps-2",
     "subject": "APS",
     "category": "Important",
+    "module": "",
     "title": "Hypothesis Testing & Confidence Intervals Formulae",
     "originalFilename": "APS_Hypothesis_Testing_Formulas.pdf",
     "storageFilename": "seed_aps_hyp.pdf",
     "fileType": "pdf",
     "size": 773,
-    "createdAt": "2026-09-14T18:39:22.373Z"
+    "createdAt": "2026-09-14T19:58:11.062Z"
   }
 ]

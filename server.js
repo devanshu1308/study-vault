@@ -231,7 +231,7 @@ app.get('/api/auth/verify', requireOwnerAuth, (req, res) => {
 
 // Owner Upload Material (PROTECTED)
 app.post('/api/materials', requireOwnerAuth, upload.single('file'), (req, res) => {
-  const { subject, category, title } = req.body;
+  const { subject, category, title, module } = req.body;
 
   if (!req.file) {
     return res.status(400).json({ error: 'Please choose a file to upload.' });
@@ -247,11 +247,13 @@ app.post('/api/materials', requireOwnerAuth, upload.single('file'), (req, res) =
 
   const materialTitle = (title && title.trim()) ? title.trim() : req.file.originalname;
   const fileType = detectFileType(req.file.originalname);
+  const moduleName = (module && module.trim()) ? module.trim() : (category === 'Notes' ? 'General Notes' : '');
 
   const newMaterial = {
     id: `mat-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
     subject,
     category,
+    module: moduleName,
     title: materialTitle,
     originalFilename: req.file.originalname,
     storageFilename: req.file.filename,

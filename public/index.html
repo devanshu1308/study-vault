@@ -256,6 +256,17 @@
             </select>
           </div>
 
+          <!-- Module / Sub-Folder (For Notes & Categorization) -->
+          <div class="form-group" id="uploadModuleGroup">
+            <label for="uploadModuleInput" class="form-label">
+              <span>📁 Module / Sub-Folder</span>
+              <span class="badge-optional">Notes</span>
+            </label>
+            <input type="text" id="uploadModuleInput" list="moduleDatalist" class="form-input" placeholder="e.g. Module 1: Neural Networks (or type new)">
+            <datalist id="moduleDatalist"></datalist>
+            <span class="form-hint">Organizes notes into module folders. PPTs and PDFs are automatically separated!</span>
+          </div>
+
           <!-- Material Title -->
           <div class="form-group">
             <label for="uploadTitleInput" class="form-label">Material Name / Title</label>

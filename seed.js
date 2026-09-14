@@ -29,15 +29,21 @@ startxref
 %%EOF`;
 }
 
+function createSamplePpt(title) {
+  return Buffer.from(`PRES:${title}\nStudy Vault Sample Presentation Slides`);
+}
+
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
 
 const seedMaterials = [
+  // AIML - Module 1
   {
     id: "mat-aiml-1",
     subject: "AIML",
     category: "Notes",
-    title: "Unit 1: Neural Networks & Backprop Deep Dive",
+    module: "Module 1: Foundations & Neural Networks",
+    title: "Unit 1: Neural Networks & Backpropagation Notes",
     originalFilename: "AIML_Unit1_Notes.pdf",
     storageFilename: "seed_aiml_unit1.pdf",
     fileType: "pdf",
@@ -45,9 +51,44 @@ const seedMaterials = [
     pdfSubtitle: "Loss functions, Backpropagation, Gradient Descent"
   },
   {
+    id: "mat-aiml-1-ppt",
+    subject: "AIML",
+    category: "Notes",
+    module: "Module 1: Foundations & Neural Networks",
+    title: "Module 1 Lecture Slides (Perceptrons & Backprop)",
+    originalFilename: "AIML_Module1_Slides.pptx",
+    storageFilename: "seed_aiml_m1_slides.pptx",
+    fileType: "ppt"
+  },
+  // AIML - Module 2
+  {
+    id: "mat-aiml-2-notes",
+    subject: "AIML",
+    category: "Notes",
+    module: "Module 2: Deep Learning & Optimization",
+    title: "Unit 2: Optimization Algorithms & Loss Surfaces",
+    originalFilename: "AIML_Unit2_Optimization.pdf",
+    storageFilename: "seed_aiml_unit2.pdf",
+    fileType: "pdf",
+    pdfTitle: "AIML - Unit 2: Optimization",
+    pdfSubtitle: "Adam, RMSprop, Momentum, Weight Decay"
+  },
+  {
+    id: "mat-aiml-2-ppt",
+    subject: "AIML",
+    category: "Notes",
+    module: "Module 2: Deep Learning & Optimization",
+    title: "Module 2 Presentation: Training Deep Networks",
+    originalFilename: "AIML_Module2_DeepLearning.pptx",
+    storageFilename: "seed_aiml_m2_slides.pptx",
+    fileType: "ppt"
+  },
+  // AIML PYQs & Labs
+  {
     id: "mat-aiml-2",
     subject: "AIML",
     category: "PYQs",
+    module: "",
     title: "Midsem 2025 Solved PYQ Paper",
     originalFilename: "AIML_Midsem_2025_Solved.pdf",
     storageFilename: "seed_aiml_midsem.pdf",
@@ -59,6 +100,7 @@ const seedMaterials = [
     id: "mat-aiml-3",
     subject: "AIML",
     category: "Labs",
+    module: "",
     title: "Lab Manual & PyTorch Experiments 1-8",
     originalFilename: "AIML_Lab_Manual_Full.pdf",
     storageFilename: "seed_aiml_lab.pdf",
@@ -66,10 +108,13 @@ const seedMaterials = [
     pdfTitle: "AIML Lab Manual - PyTorch Implementation",
     pdfSubtitle: "Codes and viva voice preparation questions"
   },
+
+  // GAI
   {
     id: "mat-gai-1",
     subject: "GAI",
     category: "Notes",
+    module: "Module 1: Transformers & Attention",
     title: "Transformers & Attention Mechanism Architecture",
     originalFilename: "GAI_Transformers_Handwritten.pdf",
     storageFilename: "seed_gai_transformers.pdf",
@@ -78,9 +123,20 @@ const seedMaterials = [
     pdfSubtitle: "Self-attention, Multi-head attention, Positional Encoding"
   },
   {
+    id: "mat-gai-1-ppt",
+    subject: "GAI",
+    category: "Notes",
+    module: "Module 1: Transformers & Attention",
+    title: "Module 1 Deck: Visualizing Self-Attention",
+    originalFilename: "GAI_Attention_Visualized.pptx",
+    storageFilename: "seed_gai_m1_slides.pptx",
+    fileType: "ppt"
+  },
+  {
     id: "mat-gai-2",
     subject: "GAI",
     category: "Important",
+    module: "",
     title: "Prompt Engineering & RAG Cheatsheet",
     originalFilename: "Prompt_Engineering_RAG_CheatSheet.pdf",
     storageFilename: "seed_gai_cheatsheet.pdf",
@@ -88,10 +144,13 @@ const seedMaterials = [
     pdfTitle: "Prompt Engineering & RAG Formulae",
     pdfSubtitle: "Vector databases, chunking strategies, chain-of-thought"
   },
+
+  // QCAI
   {
     id: "mat-qcai-1",
     subject: "QCAI",
     category: "Notes",
+    module: "Module 1: Quantum Mechanics Basics",
     title: "Qubits, Superposition & Entanglement Foundations",
     originalFilename: "QCAI_Foundations_Unit1.pdf",
     storageFilename: "seed_qcai_foundations.pdf",
@@ -103,6 +162,7 @@ const seedMaterials = [
     id: "mat-qcai-2",
     subject: "QCAI",
     category: "PYQs",
+    module: "",
     title: "Endsem 2024 Quantum Algorithm PYQs",
     originalFilename: "QCAI_Endsem_2024_PYQs.pdf",
     storageFilename: "seed_qcai_endsem.pdf",
@@ -110,10 +170,13 @@ const seedMaterials = [
     pdfTitle: "QCAI Endsem 2024 Previous Year Questions",
     pdfSubtitle: "Deutsch-Jozsa, Grover search, and Shor algorithm"
   },
+
+  // CV
   {
     id: "mat-cv-1",
     subject: "CV",
     category: "Notes",
+    module: "Module 1: Filtering & Feature Extraction",
     title: "CNNs, Convolutions & Edge Detection Filters",
     originalFilename: "CV_CNN_Convolutions.pdf",
     storageFilename: "seed_cv_cnn.pdf",
@@ -122,9 +185,20 @@ const seedMaterials = [
     pdfSubtitle: "Sobel, Prewitt, Canny Edge detector, and ResNet"
   },
   {
+    id: "mat-cv-1-ppt",
+    subject: "CV",
+    category: "Notes",
+    module: "Module 1: Filtering & Feature Extraction",
+    title: "Module 1 Slides: Spatial Filtering & Kernels",
+    originalFilename: "CV_Spatial_Filtering.pptx",
+    storageFilename: "seed_cv_m1_slides.pptx",
+    fileType: "ppt"
+  },
+  {
     id: "mat-cv-2",
     subject: "CV",
     category: "Labs",
+    module: "",
     title: "OpenCV Python Lab Codes & Output Screenshots",
     originalFilename: "CV_OpenCV_Lab_Guide.pdf",
     storageFilename: "seed_cv_opencv.pdf",
@@ -132,10 +206,13 @@ const seedMaterials = [
     pdfTitle: "CV Lab Manual - OpenCV 4.x Solutions",
     pdfSubtitle: "Filtering, Morphological ops, Contour detection"
   },
+
+  // APS
   {
     id: "mat-aps-1",
     subject: "APS",
     category: "Notes",
+    module: "Module 1: Random Variables & Distributions",
     title: "Distributions Cheatsheet (Binomial, Poisson, Normal)",
     originalFilename: "APS_Distributions_Mastery.pdf",
     storageFilename: "seed_aps_dist.pdf",
@@ -147,6 +224,7 @@ const seedMaterials = [
     id: "mat-aps-2",
     subject: "APS",
     category: "Important",
+    module: "",
     title: "Hypothesis Testing & Confidence Intervals Formulae",
     originalFilename: "APS_Hypothesis_Testing_Formulas.pdf",
     storageFilename: "seed_aps_hyp.pdf",
@@ -160,14 +238,19 @@ const vaultData = [];
 
 for (const mat of seedMaterials) {
   const filePath = path.join(uploadsDir, mat.storageFilename);
-  const pdfData = createSamplePdf(mat.pdfTitle, mat.pdfSubtitle);
-  fs.writeFileSync(filePath, pdfData);
+  if (mat.fileType === 'ppt') {
+    fs.writeFileSync(filePath, createSamplePpt(mat.title));
+  } else {
+    const pdfData = createSamplePdf(mat.pdfTitle || mat.title, mat.pdfSubtitle || '');
+    fs.writeFileSync(filePath, pdfData);
+  }
   const stats = fs.statSync(filePath);
 
   vaultData.push({
     id: mat.id,
     subject: mat.subject,
     category: mat.category,
+    module: mat.module || '',
     title: mat.title,
     originalFilename: mat.originalFilename,
     storageFilename: mat.storageFilename,
@@ -181,4 +264,4 @@ const dataDir = path.join(__dirname, 'data');
 if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
 
 fs.writeFileSync(path.join(dataDir, 'vault.json'), JSON.stringify(vaultData, null, 2));
-console.log('Seed files and vault.json generated successfully!');
+console.log('Seed files and vault.json generated successfully with module subfolders and PPTs!');
