@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="16" fill="#FAF7F2"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#FFEAA7" stroke="#1E1E24" stroke-width="3"/>
+  <path d="M16 22C16 18.6863 18.6863 16 22 16H42C45.3137 16 48 18.6863 48 22V44C48 47.3137 45.3137 50 42 50H22C18.6863 50 16 47.3137 16 44V22Z" fill="#7C5CFC" stroke="#1E1E24" stroke-width="3"/>
+  <circle cx="32" cy="33" r="7" fill="#FFF" stroke="#1E1E24" stroke-width="2.5"/>
+  <circle cx="32" cy="33" r="2.5" fill="#FF6B6B"/>
+  <line x1="32" y1="35.5" x2="32" y2="39" stroke="#1E1E24" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Sparkles -->
+  <path d="M46 12L47.5 15.5L51 17L47.5 18.5L46 22L44.5 18.5L41 17L44.5 15.5Z" fill="#FF9F43"/>
+  <circle cx="14" cy="14" r="2" fill="#00B894"/>
+</svg>

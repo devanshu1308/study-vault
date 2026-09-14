@@ -1,0 +1,123 @@
+[
+  {
+    "id": "mat-aiml-1",
+    "subject": "AIML",
+    "category": "Notes",
+    "title": "Unit 1: Neural Networks & Backprop Deep Dive",
+    "originalFilename": "AIML_Unit1_Notes.pdf",
+    "storageFilename": "seed_aiml_unit1.pdf",
+    "fileType": "pdf",
+    "size": 762,
+    "createdAt": "2026-09-14T18:39:22.364Z"
+  },
+  {
+    "id": "mat-aiml-2",
+    "subject": "AIML",
+    "category": "PYQs",
+    "title": "Midsem 2025 Solved PYQ Paper",
+    "originalFilename": "AIML_Midsem_2025_Solved.pdf",
+    "storageFilename": "seed_aiml_midsem.pdf",
+    "fileType": "pdf",
+    "size": 750,
+    "createdAt": "2026-09-14T18:39:22.365Z"
+  },
+  {
+    "id": "mat-aiml-3",
+    "subject": "AIML",
+    "category": "Labs",
+    "title": "Lab Manual & PyTorch Experiments 1-8",
+    "originalFilename": "AIML_Lab_Manual_Full.pdf",
+    "storageFilename": "seed_aiml_lab.pdf",
+    "fileType": "pdf",
+    "size": 759,
+    "createdAt": "2026-09-14T18:39:22.370Z"
+  },
+  {
+    "id": "mat-gai-1",
+    "subject": "GAI",
+    "category": "Notes",
+    "title": "Transformers & Attention Mechanism Architecture",
+    "originalFilename": "GAI_Transformers_Handwritten.pdf",
+    "storageFilename": "seed_gai_transformers.pdf",
+    "fileType": "pdf",
+    "size": 771,
+    "createdAt": "2026-09-14T18:39:22.371Z"
+  },
+  {
+    "id": "mat-gai-2",
+    "subject": "GAI",
+    "category": "Important",
+    "title": "Prompt Engineering & RAG Cheatsheet",
+    "originalFilename": "Prompt_Engineering_RAG_CheatSheet.pdf",
+    "storageFilename": "seed_gai_cheatsheet.pdf",
+    "fileType": "pdf",
+    "size": 765,
+    "createdAt": "2026-09-14T18:39:22.371Z"
+  },
+  {
+    "id": "mat-qcai-1",
+    "subject": "QCAI",
+    "category": "Notes",
+    "title": "Qubits, Superposition & Entanglement Foundations",
+    "originalFilename": "QCAI_Foundations_Unit1.pdf",
+    "storageFilename": "seed_qcai_foundations.pdf",
+    "fileType": "pdf",
+    "size": 761,
+    "createdAt": "2026-09-14T18:39:22.371Z"
+  },
+  {
+    "id": "mat-qcai-2",
+    "subject": "QCAI",
+    "category": "PYQs",
+    "title": "Endsem 2024 Quantum Algorithm PYQs",
+    "originalFilename": "QCAI_Endsem_2024_PYQs.pdf",
+    "storageFilename": "seed_qcai_endsem.pdf",
+    "fileType": "pdf",
+    "size": 765,
+    "createdAt": "2026-09-14T18:39:22.372Z"
+  },
+  {
+    "id": "mat-cv-1",
+    "subject": "CV",
+    "category": "Notes",
+    "title": "CNNs, Convolutions & Edge Detection Filters",
+    "originalFilename": "CV_CNN_Convolutions.pdf",
+    "storageFilename": "seed_cv_cnn.pdf",
+    "fileType": "pdf",
+    "size": 766,
+    "createdAt": "2026-09-14T18:39:22.372Z"
+  },
+  {
+    "id": "mat-cv-2",
+    "subject": "CV",
+    "category": "Labs",
+    "title": "OpenCV Python Lab Codes & Output Screenshots",
+    "originalFilename": "CV_OpenCV_Lab_Guide.pdf",
+    "storageFilename": "seed_cv_opencv.pdf",
+    "fileType": "pdf",
+    "size": 760,
+    "createdAt": "2026-09-14T18:39:22.372Z"
+  },
+  {
+    "id": "mat-aps-1",
+    "subject": "APS",
+    "category": "Notes",
+    "title": "Distributions Cheatsheet (Binomial, Poisson, Normal)",
+    "originalFilename": "APS_Distributions_Mastery.pdf",
+    "storageFilename": "seed_aps_dist.pdf",
+    "fileType": "pdf",
+    "size": 760,
+    "createdAt": "2026-09-14T18:39:22.373Z"
+  },
+  {
+    "id": "mat-aps-2",
+    "subject": "APS",
+    "category": "Important",
+    "title": "Hypothesis Testing & Confidence Intervals Formulae",
+    "originalFilename": "APS_Hypothesis_Testing_Formulas.pdf",
+    "storageFilename": "seed_aps_hyp.pdf",
+    "fileType": "pdf",
+    "size": 773,
+    "createdAt": "2026-09-14T18:39:22.373Z"
+  }
+]

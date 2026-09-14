@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📚 THE STUDY VAULT - Because apparently we have to study.</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Social & Link Preview Meta Tags -->
+  <meta name="description" content="Our chaotic college study vault. Direct 1-click downloads for AIML, GAI, QCAI, CV, and APS notes, PYQs, and lab manuals.">
+  <meta property="og:title" content="📚 THE STUDY VAULT">
+  <meta property="og:description" content="Because apparently we have to study. Access notes, PYQs, and lab manuals for AIML, GAI, QCAI, CV, and APS.">
+  <meta property="og:image" content="/assets/og-preview.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="📚 THE STUDY VAULT">
+  <meta name="twitter:description" content="5 subjects. 0 excuses. Instant notes &amp; PYQ downloads for our crew.">
+  <meta name="twitter:image" content="/assets/og-preview.png">
+  <meta name="theme-color" content="#FAF7F2">
+
+  <!-- Google Fonts: Fredoka & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Floating Background Shapes & Doodles -->
+  <div class="ambient-decor" aria-hidden="true">
+    <div class="floating-shape shape-1">✦</div>
+    <div class="floating-shape shape-2">✦</div>
+    <div class="floating-shape shape-3">★</div>
+    <div class="floating-shape shape-4">✹</div>
+    <div class="floating-shape shape-5">✦</div>
+    <div class="floating-shape shape-6">✏️</div>
+    <div class="floating-shape shape-7">☕</div>
+  </div>
+
+  <div class="page-wrapper">
+    <!-- Top Announcement Sticker -->
+    <header class="vault-header">
+      <div class="header-sticker-wrapper">
+        <span class="header-sticker pulse-slow">
+          <span class="sticker-icon">⚡</span> SEMESTER SURVIVAL KIT
+        </span>
+        <span class="header-pill">5 subjects • 0 excuses</span>
+      </div>
+
+      <!-- Main Playful Title -->
+      <h1 class="main-title">
+        <span class="title-emoji wobble-hover">📚</span>
+        <span class="title-text">THE STUDY VAULT</span>
+      </h1>
+
+      <p class="main-subtitle">
+        "Because apparently we have to study."
+      </p>
+
+      <div class="vault-stats-bar" id="statsBar">
+        <span class="stat-pill"><span class="stat-dot"></span> <span id="totalMaterialsCount">11</span> materials locked &amp; loaded</span>
+        <span class="stat-pill">✨ 100% direct downloads</span>
+        <span class="stat-pill">🎯 0 ads or signups</span>
+      </div>
+    </header>
+
+    <!-- 5 Subject Cards Grid -->
+    <main class="vault-main">
+      <div class="cards-grid-wrapper">
+        <div class="cards-grid" id="subjectsGrid">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </div>
+
+      <!-- Bottom College Punchline -->
+      <div class="bottom-punchline">
+        <p class="punchline-text">"Choose your suffering. Good luck soldier." 🫡</p>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="vault-footer">
+      <div class="footer-left">
+        <span>Crafted with panic and caffeine.</span>
+        <span class="footer-dot">•</span>
+        <span>Semester Safe Space</span>
+      </div>
+
+      <div class="footer-right">
+        <!-- Hidden/Discreet Owner Mode Button -->
+        <button type="button" class="owner-toggle-btn" id="ownerToggleBtn" title="Owner Access">
+          <span class="lock-icon" id="ownerLockIcon">🔒</span>
+          <span id="ownerStatusText">Owner Mode</span>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SUBJECT VAULT COMPARTMENT DRAWER / MODAL -->
+  <!-- ========================================== -->
+  <div class="compartment-overlay" id="compartmentOverlay" aria-hidden="true">
+    <div class="compartment-backdrop" id="compartmentBackdrop"></div>
+    <div class="compartment-panel" id="compartmentPanel" role="dialog" aria-modal="true">
+      <!-- Drawer Header Bar -->
+      <div class="compartment-header" id="compartmentHeader">
+        <div class="header-left">
+          <div class="compartment-badge" id="drawerSubjectEmoji">🤖</div>
+          <div class="compartment-titles">
+            <div class="drawer-code-row">
+              <h2 class="drawer-subject-code" id="drawerSubjectCode">AIML</h2>
+              <span class="drawer-count-badge" id="drawerCountBadge">3 materials</span>
+            </div>
+            <p class="drawer-tagline" id="drawerTagline">"Okay, let's pretend we're prepared."</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <!-- Owner Add Material Button (shown only when owner logged in) -->
+          <button type="button" class="btn btn-add-material hidden" id="openUploadBtn">
+            <span>➕</span> Add Material
+          </button>
+          <button type="button" class="btn btn-close" id="closeDrawerBtn" aria-label="Close Compartment">✕</button>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-pills-bar" id="categoryPillsBar">
+        <!-- Generated dynamically based on available materials -->
+      </div>
+
+      <!-- Compartment Materials Content -->
+      <div class="compartment-body" id="compartmentBody">
+        <div class="materials-list" id="materialsList">
+          <!-- Material items or categorized sections rendered here -->
+        </div>
+
+        <!-- Empty state fallback -->
+        <div class="empty-state hidden" id="drawerEmptyState">
+          <div class="empty-emoji">😴</div>
+          <h3 class="empty-title">Nothing here yet!</h3>
+          <p class="empty-desc">Either the syllabus vanished or whoever was supposed to upload notes fell asleep.</p>
+          <button type="button" class="btn btn-upload-empty hidden" id="emptyUploadBtn">
+            <span>➕</span> Upload the first material
+          </button>
+        </div>
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="compartment-footer">
+        <span class="footer-tip">💡 Click <strong>Download</strong> for the direct, unfiltered file.</span>
+        <button type="button" class="btn btn-close-secondary" id="closeDrawerSecondaryBtn">Back to Vault</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- OWNER AUTHENTICATION MODAL -->
+  <!-- ========================================== -->
+  <div class="modal-overlay" id="authModalOverlay" aria-hidden="true">
+    <div class="modal-backdrop" id="authModalBackdrop"></div>
+    <div class="modal-card auth-modal">
+      <div class="modal-header">
+        <div class="modal-title-row">
+          <span class="modal-icon">🔐</span>
+          <h3 class="modal-title">Vault Master Key</h3>
+        </div>
+        <button type="button" class="btn-icon-close" id="closeAuthModalBtn">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="modal-desc">
+          Only the vault master can upload or delete files. Friends just chill and download!
+        </p>
+
+        <form id="authForm">
+          <div class="form-group">
+            <label for="adminPasswordInput" class="form-label">Master Password</label>
+            <div class="password-input-wrapper">
+              <input type="password" id="adminPasswordInput" class="form-input" placeholder="Enter owner key..." required autocomplete="current-password">
+              <button type="button" class="btn-toggle-eye" id="togglePasswordEyeBtn" title="Toggle visibility">👁️</button>
+            </div>
+            <p class="form-error hidden" id="authErrorMsg">Wrong password! 🤨</p>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-ghost" id="cancelAuthBtn">Nevermind</button>
+            <button type="submit" class="btn btn-primary" id="submitAuthBtn">
+              <span>Unlock Vault</span> 🚀
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- OWNER UPLOAD MATERIAL MODAL -->
+  <!-- ========================================== -->
+  <div class="modal-overlay" id="uploadModalOverlay" aria-hidden="true">
+    <div class="modal-backdrop" id="uploadModalBackdrop"></div>
+    <div class="modal-card upload-modal">
+      <div class="modal-header">
+        <div class="modal-title-row">
+          <span class="modal-icon">📦</span>
+          <h3 class="modal-title">Add Study Material</h3>
+        </div>
+        <button type="button" class="btn-icon-close" id="closeUploadModalBtn">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="uploadForm">
+          <!-- Subject Selector -->
+          <div class="form-group">
+            <label for="uploadSubjectSelect" class="form-label">Subject</label>
+            <select id="uploadSubjectSelect" class="form-select" required>
+              <option value="AIML">🤖 AIML</option>
+              <option value="GAI">✨ GAI</option>
+              <option value="QCAI">🧠 QCAI</option>
+              <option value="CV">👁️ CV</option>
+              <option value="APS">📊 APS</option>
+            </select>
+          </div>
+
+          <!-- Category Selector -->
+          <div class="form-group">
+            <label for="uploadCategorySelect" class="form-label">Category</label>
+            <select id="uploadCategorySelect" class="form-select" required>
+              <option value="Notes">📖 Notes</option>
+              <option value="PYQs">📝 PYQs</option>
+              <option value="Labs">🧪 Labs</option>
+              <option value="PPTs">📊 PPTs</option>
+              <option value="Assignments">📚 Assignments</option>
+              <option value="Important">⭐ Important</option>
+              <option value="Other">📦 Other</option>
+            </select>
+          </div>
+
+          <!-- Material Title -->
+          <div class="form-group">
+            <label for="uploadTitleInput" class="form-label">Material Name / Title</label>
+            <input type="text" id="uploadTitleInput" class="form-input" placeholder="e.g., Unit 1 Neural Networks Notes" required>
+            <span class="form-hint">Give it a recognizable title so friends know what they're downloading.</span>
+          </div>
+
+          <!-- File Dropzone -->
+          <div class="form-group">
+            <label class="form-label">File (PDF, PPTX, DOCX, ZIP, etc.)</label>
+            <div class="file-dropzone" id="fileDropzone">
+              <input type="file" id="filePickerInput" class="file-input-hidden" required>
+              <div class="dropzone-content" id="dropzoneContent">
+                <span class="dropzone-icon">📁</span>
+                <p class="dropzone-text"><strong>Click to browse</strong> or drag &amp; drop a file here</p>
+                <span class="dropzone-sub">Max size: 100 MB</span>
+              </div>
+              <div class="selected-file-badge hidden" id="selectedFileBadge">
+                <span class="file-badge-icon" id="selectedFileIcon">📄</span>
+                <span class="file-badge-name" id="selectedFileName">filename.pdf</span>
+                <span class="file-badge-size" id="selectedFileSize">(2.4 MB)</span>
+                <button type="button" class="btn-clear-file" id="clearFileBtn" title="Remove file">✕</button>
+              </div>
+            </div>
+            <p class="form-error hidden" id="uploadErrorMsg"></p>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-ghost" id="cancelUploadBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="submitUploadBtn">
+              <span id="uploadBtnText">🚀 Stash in Vault</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- DELETE CONFIRMATION MODAL -->
+  <!-- ========================================== -->
+  <div class="modal-overlay" id="deleteModalOverlay" aria-hidden="true">
+    <div class="modal-backdrop" id="deleteModalBackdrop"></div>
+    <div class="modal-card delete-modal">
+      <div class="modal-header">
+        <div class="modal-title-row">
+          <span class="modal-icon">🗑️</span>
+          <h3 class="modal-title">Delete Material?</h3>
+        </div>
+        <button type="button" class="btn-icon-close" id="closeDeleteModalBtn">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="delete-warning">
+          Are you sure you want to delete <strong id="deleteMaterialName">"Unit 1 Notes"</strong>?
+        </p>
+        <p class="delete-sub">
+          This will permanently purge the file from the server. There is no undo!
+        </p>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="cancelDeleteBtn">Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+            <span>Yes, Purge it</span> 🗑️
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- FLOATING OWNER ACTIVE BADGE -->
+  <!-- ========================================== -->
+  <div class="owner-pill-float hidden" id="ownerPillFloat">
+    <span class="owner-crown">👑</span>
+    <span class="owner-pill-text">Owner Mode Active</span>
+    <button type="button" class="btn-owner-logout" id="ownerLogoutBtn" title="Logout from Owner Mode">Logout</button>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Frontend Script -->
+  <script src="app.js"></script>
+</body>
+</html>

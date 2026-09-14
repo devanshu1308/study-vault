@@ -1,0 +1,21 @@
+{
+  "name": "study-vault",
+  "version": "1.0.0",
+  "description": "Our little chaotic college study vault for notes, PYQs, and lab manuals",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test-vault.js"
+  },
+  "keywords": ["study", "vault", "notes", "college"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}
